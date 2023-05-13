@@ -10,7 +10,7 @@ type ImagesProps = {
 
 export const Images: React.FunctionComponent<ImagesProps> = observer(({ model }) => {
     return (
-        <div>
+        <div className="image">
             {model.currentImage && <Image model={model.currentImage} />}
         </div>
     );

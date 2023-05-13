@@ -36,6 +36,8 @@ const createWindow = (): void => {
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
 
+  mainWindow.removeMenu();
+
   ipcMain.handle("filemanager:getImagesInDirectory", getImagesInDirectory);
   ipcMain.handle("filemanager:deleteImage", deleteImage);
 
