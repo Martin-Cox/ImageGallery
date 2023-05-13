@@ -12,9 +12,9 @@ type AppProps = {
 
 const App: React.FunctionComponent<AppProps> = observer(({ model }) => {
     return (
-        <>
+        <div className='image-viewer' tabIndex={1} onKeyDown={(event) => model.onKeydown(event)}>
             <Images model={model.imagesViewModel} />
-        </>
+        </div>
     )
 });
 

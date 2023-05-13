@@ -12,6 +12,6 @@ export class ImageViewModel {
     }
 
     public get path(): string {
-        return this._image.path;
+        return `test-protocol://getFile/${this._image.path}`;
     }
 }
