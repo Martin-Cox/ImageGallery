@@ -4,6 +4,7 @@ import { observer } from "mobx-react";
 
 import { App as AppModel } from '../models/App';
 import { AppViewModel } from "../viewmodels/AppViewModel";
+import { Images } from '../../../ui/image/components/Images';
 
 type AppProps = {
     model: AppViewModel
@@ -12,7 +13,7 @@ type AppProps = {
 const App: React.FunctionComponent<AppProps> = observer(({ model }) => {
     return (
         <>
-            <h1>{model.text}</h1>
+            <Images model={model.imagesViewModel} />
         </>
     )
 });

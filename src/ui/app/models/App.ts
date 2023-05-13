@@ -1,21 +1,21 @@
 import { action, computed, observable } from "mobx";
-import { ImageInformation } from "../../../engine/FileManager";
+import { Images } from "../../../ui/image/models/Images";
 
 export class App {
-    @observable
-    private _directoryImages: ImageInformation[] = [];
+    private readonly _images: Images;
 
     public constructor() {
+        this._images = new Images();
         this._loadImagesInTestDirectory();
     }
 
     @computed
-    public get directoryImages(): ImageInformation[] {
-        return this._directoryImages;
+    public get images(): Images {
+        return this._images;
     }
 
     @action
     private async _loadImagesInTestDirectory(): Promise<void> {
-        this._directoryImages = await window.galleryAPI.getImagesInDirectory("O:\TEST");
+        this._images.loadImagesFromDirectory("O:\TEST");
     }
 }

@@ -13,7 +13,7 @@ export class FileManager {
             .filter((value) => value.isFile() && this.REGEX_IMAGE_FILE_EXTENSION.test(value.name))
             .map((file) => ({
                 filename: file.name,
-                path: directory
+                path: `${directory}\\${file.name}`
              }));
     }
 }
