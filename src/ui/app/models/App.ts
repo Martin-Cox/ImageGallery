@@ -16,6 +16,6 @@ export class App {
 
     @action
     private async _loadImagesInTestDirectory(): Promise<void> {
-        this._images.loadImagesFromDirectory("O:\TEST");
+        this._images.setDirectory("O:\TEST");
     }
 }

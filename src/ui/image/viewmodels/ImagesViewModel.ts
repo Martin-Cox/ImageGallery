@@ -9,9 +9,6 @@ export class ImagesViewModel {
     @observable
     private _imageViewModels: ImageViewModel[] = [];
 
-    @observable
-    private _index: number = 0;
-
     public constructor(images: Images) {
         makeObservable(this);
 
@@ -22,29 +19,23 @@ export class ImagesViewModel {
 
     @computed
     public get currentImage(): ImageViewModel | undefined {
-        return this._imageViewModels.length ? this._imageViewModels[this._index] : undefined
+        return this._imageViewModels.length ? this._imageViewModels[this._images.index] : undefined
     }
 
     @action
     public nextImage(): void {
-        let nextIndex = this._index + 1;
-
-        if (nextIndex > this._images.images.length - 1) {
-            nextIndex = 0;
-        }
-
-        this._index = nextIndex;
+        this._images.nextImage();
     }
 
     @action
     public previousImage(): void {
-        let previousIndex = this._index - 1;
+        this._images.previousImage();
+    }
 
-        if (previousIndex < 0) {
-            previousIndex = this._images.images.length - 1;
-        }
-
-        this._index = previousIndex;
+    @action
+    public deleteCurrentImage(): void {
+        //TODO: Show a confirmation dialog here
+        this._images.deleteCurrentImage();
     }
 
     @action

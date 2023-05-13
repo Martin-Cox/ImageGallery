@@ -30,6 +30,10 @@ export class AppViewModel {
                 event.preventDefault();
                 this.imagesViewModel.nextImage();
                 break;
+            case "Delete":
+            case "Backspace":
+                event.preventDefault();
+                this._imagesViewModel.deleteCurrentImage();
         }
     }
 }

@@ -4,5 +4,6 @@
 import { contextBridge, ipcRenderer } from "electron";
 
 contextBridge.exposeInMainWorld("galleryAPI", {
-    getImagesInDirectory: (directory: string) => ipcRenderer.invoke("filemanager:getImagesInDirectory", directory)
+    getImagesInDirectory: (directory: string) => ipcRenderer.invoke("filemanager:getImagesInDirectory", directory),
+    deleteImage: (path: string) => ipcRenderer.invoke("filemanager:deleteImage", path)
 });

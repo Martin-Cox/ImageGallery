@@ -16,4 +16,8 @@ export class FileManager {
                 path: `${directory}\\${file.name}`
              }));
     }
+
+    public static async deleteImage(path: string): Promise<void> {
+        await fs.remove(path);
+    }
 }

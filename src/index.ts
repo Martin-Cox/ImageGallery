@@ -16,6 +16,10 @@ async function getImagesInDirectory(event: Electron.IpcMainInvokeEvent, director
   return FileManager.getImagesInDirectory(directory);
 }
 
+async function deleteImage(event: Electron.IpcMainInvokeEvent, path: string): Promise<void> {
+  return FileManager.deleteImage(path);
+}
+
 const createWindow = (): void => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
@@ -33,10 +37,9 @@ const createWindow = (): void => {
   mainWindow.webContents.openDevTools();
 
   ipcMain.handle("filemanager:getImagesInDirectory", getImagesInDirectory);
+  ipcMain.handle("filemanager:deleteImage", deleteImage);
 
   protocol.registerFileProtocol("test-protocol", (request, callback) => {
-    debugger;
-
     const url = request.url.replace('test-protocol://getFile/', '');
     
     try {
